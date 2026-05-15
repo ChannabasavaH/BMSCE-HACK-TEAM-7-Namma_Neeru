@@ -111,6 +111,8 @@ FINAL VISION:
 A city usually reacts to shortage after damage begins.
 This platform aims to give Bengaluru a predictive water intelligence system powered by AI.
 
+-- developed by Team Zypher @ BMSCE
+
 
 
 

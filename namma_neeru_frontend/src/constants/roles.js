@@ -1,5 +1,5 @@
 export const ROLES = {
-  CUSTOMER: 'Customer',
-  WORKER: 'Tanker Worker',
-  OFFICIAL: 'BWSSB Official',
+  CUSTOMER: 'customer',
+  WORKER: 'worker',
+  OFFICIAL: 'official',
 };

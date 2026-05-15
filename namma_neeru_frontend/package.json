@@ -12,10 +12,13 @@
   "dependencies": {
     "@tanstack/react-query": "^5.100.10",
     "framer-motion": "^12.38.0",
+    "i18next": "^26.2.0",
+    "i18next-browser-languagedetector": "^8.2.1",
     "lucide-react": "^1.16.0",
     "mapbox-gl": "^3.23.1",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
+    "react-i18next": "^17.0.8",
     "react-loading-skeleton": "^3.5.0",
     "react-map-gl": "^8.1.1",
     "react-router-dom": "^7.15.1",

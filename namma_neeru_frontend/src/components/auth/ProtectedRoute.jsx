@@ -1,12 +1,18 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { useAuthStore } from '../../store/authStore';
 
 const ProtectedRoute = ({ children, allowedRoles }) => {
-  const { user, isHydrated, openModal, setIntendedRoute } = useAuthStore();
+  const {
+    user,
+    isHydrated,
+    openModal,
+    setIntendedRoute
+  } = useAuthStore();
+
   const location = useLocation();
 
-  // Show a loading state until Zustand rehydrates from localStorage
+  // Wait for Zustand hydration
   if (!isHydrated) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-slate-50">
@@ -15,19 +21,23 @@ const ProtectedRoute = ({ children, allowedRoles }) => {
     );
   }
 
-  // If not logged in
+  // Not logged in
   if (!user) {
-    // Open modal with intended route remembered
     setTimeout(() => {
       setIntendedRoute(location.pathname);
       openModal('login');
     }, 0);
-    // Redirect to home safely without triggering modal continuously
+
     return <Navigate to="/" replace />;
   }
 
-  // If role is not allowed
-  if (allowedRoles && !allowedRoles.includes(user.role)) {
+  // Role check
+  if (
+    allowedRoles &&
+    !allowedRoles
+      .map(role => role.toLowerCase())
+      .includes(user.role?.toLowerCase())
+  ) {
     return <Navigate to="/unauthorized" replace />;
   }
 
